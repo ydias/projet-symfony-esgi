@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Suggestion{% endblock %}
+
+{% block body %}
+    <h1>Suggestion</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ suggestion.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ suggestion.description }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ suggestion.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ suggestion.note }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('suggestion_index') }}">back to list</a>
+
+    <a href="{{ path('suggestion_edit', {'id': suggestion.id}) }}">edit</a>
+
+    {{ include('suggestion/_delete_form.html.twig') }}
+{% endblock %}
