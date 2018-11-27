@@ -3,6 +3,11 @@
 {% block title %}Edit Bug{% endblock %}
 
 {% block body %}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Bugs</h1>
+        </div>
+    </div>
     <h1>Edit Bug</h1>
 
     {{ include('bug/_form.html.twig', {'button_label': 'Update'}) }}
