@@ -17,6 +17,7 @@
                 <th>Auteur</th>
                 <th>EtatAvancement</th>
                 <th>Note</th>
+                <th>updatedAt</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -28,8 +29,9 @@
                 <td>{{ bug.auteur }}</td>
                 <td>{{ bug.etatAvancement }}</td>
                 <td>{{ bug.note }}</td>
+                <td> {{ bug.updatedAt | date }}</td>
                 <td>
-                    <a href="{{ path('bug_show', {'id': bug.id}) }}">show</a>
+                    <a href="{{ path('bug_show', {'slug': bug.slug}) }}">show</a>
                     <a href="{{ path('bug_edit', {'id': bug.id}) }}">edit</a>
                 </td>
             </tr>

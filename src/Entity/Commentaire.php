@@ -31,6 +31,11 @@ class Commentaire
      */
     private $texte;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Bug", inversedBy="Commentaires")
+     */
+    private $bug;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class Commentaire
     public function setTexte(string $texte): self
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getBug(): ?Bug
+    {
+        return $this->bug;
+    }
+
+    public function setBug(?Bug $bug): self
+    {
+        $this->bug = $bug;
 
         return $this;
     }

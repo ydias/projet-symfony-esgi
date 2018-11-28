@@ -47,7 +47,7 @@ class BugController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="bug_show", methods="GET")
+     * @Route("/{slug}", name="bug_show", methods="GET")
      */
     public function show(Bug $bug): Response
     {
@@ -86,5 +86,26 @@ class BugController extends AbstractController
         }
 
         return $this->redirectToRoute('bug_index');
+    }
+
+
+    /**
+     * @Route("/{id}/add/commentaire", name="bug_add_commentaire", methods="GET|POST")
+     */
+    public function addCommentaire(Request $request, Bug $bug): Response
+    {
+        $form = $this->createForm(CommentaireType::class, $bug);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('bug_index', ['id' => $bug->getId()]);
+        }
+
+        return $this->render('bug/edit.html.twig', [
+            'bug' => $bug,
+            'form' => $form->createView(),
+        ]);
     }
 }
